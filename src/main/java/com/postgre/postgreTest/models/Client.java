@@ -13,6 +13,8 @@ public class Client {
     private String name;
     private String email;
 
+
+
     public Integer getId() {
         return id;
     }
@@ -35,5 +37,9 @@ public class Client {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String toString() {
+        return "User with id: " + this.id + ", name: " + this.name + ", email: " + this.email;
     }
 }

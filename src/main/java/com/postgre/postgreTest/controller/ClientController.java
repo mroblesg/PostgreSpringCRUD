@@ -19,23 +19,17 @@ public class ClientController {
     @GetMapping("/clients")
     public ResponseEntity<List<Client>> listAll() {
         try {
-            return new ResponseEntity<>(clientRepo.findAll(), HttpStatus.OK);
+            List<Client> clients = clientRepo.findAll();
+            return new ResponseEntity<>(clients, HttpStatus.OK);
         } catch(Exception e) {
+            System.out.println(e);
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @PostMapping("/client")
     public ResponseEntity<Client> newClient(@RequestBody Client client) {
-
-        //Client client = new Client();
-        //client.setName("Miguel");
-        //client.setEmail("miguel00rg@hotmail.com");
-
-        //clientRepo.save(client);
-
-        System.out.println(client);
-
+        clientRepo.save(client);
         return new ResponseEntity<>(client, HttpStatus.OK);
 
     }
